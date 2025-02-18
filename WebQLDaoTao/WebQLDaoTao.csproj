@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="Diem.aspx" />
     <Content Include="Global.asax" />
     <Content Include="QLKhoa.aspx" />
     <Content Include="QLMonHoc.aspx" />
@@ -83,9 +84,18 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Diem.aspx.cs">
+      <DependentUpon>Diem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Diem.aspx.designer.cs">
+      <DependentUpon>Diem.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\KetQua.cs" />
+    <Compile Include="Models\KetQuaDAO.cs" />
     <Compile Include="Models\Khoa.cs" />
     <Compile Include="Models\KhoaDAO.cs" />
     <Compile Include="Models\MonHoc.cs" />
@@ -150,7 +160,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52142</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44319/</IISUrl>
+          <IISUrl>http://localhost:44319/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
