@@ -7,10 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
 namespace WebQLDaoTao
 {
-    public partial class Diem
+
+
+    public partial class SecurePage
     {
 
         /// <summary>

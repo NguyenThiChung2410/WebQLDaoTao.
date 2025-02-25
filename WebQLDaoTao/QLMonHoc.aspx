@@ -71,7 +71,7 @@
                     </EditItemTemplate>
                 </asp:TemplateField>
             </Columns>
-            <HeaderStyle BackColor="#0066cc" ForeColor="#ffffff" />
+            <HeaderStyle BackColor="#0066cc" ForeColor="#ffffff" /> 
             <PagerStyle HorizontalAlign="Center" CssClass="pager-style" />
         </asp:GridView>
     </div>

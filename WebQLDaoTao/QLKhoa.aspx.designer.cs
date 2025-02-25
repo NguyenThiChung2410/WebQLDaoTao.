@@ -15,22 +15,22 @@ namespace WebQLDaoTao
     {
 
         /// <summary>
-        /// txtMakh control.
+        /// txtMaKH control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMakh;
+        protected global::System.Web.UI.WebControls.TextBox txtMaKH;
 
         /// <summary>
-        /// txtTenkh control.
+        /// txtTenKH control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTenkh;
+        protected global::System.Web.UI.WebControls.TextBox txtTenKH;
 
         /// <summary>
         /// btnThem control.
@@ -51,6 +51,15 @@ namespace WebQLDaoTao
         protected global::System.Web.UI.WebControls.ValidationSummary vsKq;
 
         /// <summary>
+        /// ObjectDataSource1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
+
+        /// <summary>
         /// gvKhoa control.
         /// </summary>
         /// <remarks>
@@ -58,5 +67,14 @@ namespace WebQLDaoTao
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvKhoa;
+
+        /// <summary>
+        /// ods_Khoa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ods_Khoa;
     }
 }

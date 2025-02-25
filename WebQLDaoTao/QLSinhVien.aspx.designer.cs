@@ -24,13 +24,13 @@ namespace WebQLDaoTao
         protected global::System.Web.UI.WebControls.TextBox txtMaSV;
 
         /// <summary>
-        /// txtHoSv control.
+        /// txtHoSV control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHoSv;
+        protected global::System.Web.UI.WebControls.TextBox txtHoSV;
 
         /// <summary>
         /// txtTenSV control.
@@ -130,5 +130,23 @@ namespace WebQLDaoTao
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gv_SinhVien;
+
+        /// <summary>
+        /// ods_Khoa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ods_Khoa;
+
+        /// <summary>
+        /// ods_SinhVien control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource ods_SinhVien;
     }
 }

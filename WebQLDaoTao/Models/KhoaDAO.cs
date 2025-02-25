@@ -18,42 +18,38 @@ namespace WebQLDaoTao.Models
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                Khoa kh = new Khoa {
-                    MaKH = dr["MaKH"].ToString(),
-                    TenKH = dr["TenKH"].ToString()
-                };
+                Khoa kh = new Khoa { MaKH = dr["MaKH"].ToString(), TenKH = dr["TenKH"].ToString() };
                 dsKhoa.Add(kh);
             }
             return dsKhoa;
 
         }
-        public int Update(Khoa kh)
+        public int Update(Khoa mh)
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["WebQLDaoTao_ConStr"].ConnectionString);
             conn.Open();
-            SqlCommand cmd = new SqlCommand("update khoa set tenkh = @tenkh where makh = @makh", conn);
-            cmd.Parameters.AddWithValue("@tenkh", kh.TenKH);
+            SqlCommand cmd = new SqlCommand("update Khoa set tenkh=@tenkh where makh=@makh", conn);
+            cmd.Parameters.AddWithValue("@tenkh", mh.TenKH);
+            cmd.Parameters.AddWithValue("@makh", mh.MaKH);
+            return cmd.ExecuteNonQuery();
+        }
+        public int Delete(Khoa kh)
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["WebQLDaoTao_ConStr"].ConnectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("delete from Khoa where makh=@makh", conn);
             cmd.Parameters.AddWithValue("@makh", kh.MaKH);
             return cmd.ExecuteNonQuery();
         }
-        public int Delete(string makh)
+        public int Insert(Khoa mh)
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["WebQLDaoTao_ConStr"].ConnectionString);
             conn.Open();
-            SqlCommand cmd = new SqlCommand("delete from khoa where makh=@makh", conn);
-            cmd.Parameters.AddWithValue("@makh", makh);
+            SqlCommand cmd = new SqlCommand("insert into Khoa(makh, tenkh) values(@makh, @tenkh)", conn);
+            cmd.Parameters.AddWithValue("@makh", mh.MaKH);
+            cmd.Parameters.AddWithValue("@tenkh", mh.TenKH);
             return cmd.ExecuteNonQuery();
         }
-        public int Insert(Khoa kh)
-        {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["WebQLDaoTao_ConStr"].ConnectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("insert into khoa(mamh, tenmh) values(@makh, @tenkh)", conn);
-            cmd.Parameters.AddWithValue("@makh", kh.MaKH);
-            cmd.Parameters.AddWithValue("@tenkh", kh.TenKH);
-            return cmd.ExecuteNonQuery();
-        }
-
         public Khoa findById(string makh)
         {
             Khoa kq = null;
@@ -62,7 +58,7 @@ namespace WebQLDaoTao.Models
             SqlCommand cmd = new SqlCommand("select * from Khoa where makh=@makh", conn);
             cmd.Parameters.AddWithValue("@makh", makh);
             SqlDataReader dr = cmd.ExecuteReader();
-            if (dr.Read())
+            while (dr.Read())
             {
                 kq = new Khoa { MaKH = dr["MaKH"].ToString(), TenKH = dr["TenKH"].ToString() };
             }
