@@ -76,9 +76,17 @@
     <Content Include="QLMonHoc.aspx" />
     <Content Include="QLSinhVien.aspx" />
     <Content Include="SecurePage.aspx" />
+    <Content Include="TuChoiTruyCap.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TuChoiTruyCap.aspx.cs">
+      <DependentUpon>TuChoiTruyCap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TuChoiTruyCap.aspx.designer.cs">
+      <DependentUpon>TuChoiTruyCap.aspx</DependentUpon>
+    </Compile>
     <Content Include="Contents\Paging.css" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

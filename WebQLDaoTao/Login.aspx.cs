@@ -8,28 +8,28 @@ using WebQLDaoTao.Models;
 
 namespace WebQLDaoTao
 {
-    public partial class Login : System.Web.UI.Page
+    public partial class Login : SecurePage
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
 
-        }
+        TaiKhoanDAO taiKhoanDAO = new TaiKhoanDAO();
 
         protected void btLogin_Click(object sender, EventArgs e)
         {
-            string tenDN = txtTenDN.Text.Trim();
-            string matKhau = txtMatKhau.Text.Trim();
+            string tenDN = txtUsername.Text.Trim();
+            string matKhau = txtPassword.Text.Trim();
 
-            TaiKhoanDAO tkDAO = new TaiKhoanDAO();
-            TaiKhoan tk = tkDAO.KiemTra(tenDN, matKhau);
+            TaiKhoan tk = taiKhoanDAO.DangNhap(tenDN, matKhau);
 
             if (tk != null)
             {
                 Session["TaiKhoan"] = tk;
-                Session["TenDN"] = tk.TenDN;
-                Response.Redirect("Default.aspx"); // Chuyển hướng sau khi đăng nhập thành công
+                Session["VaiTro"] = tk.VaiTro;
+                Response.Redirect("Default.aspx");
             }
-
+            else
+            {
+                lblMessage.Text = "❌ Tên đăng nhập hoặc mật khẩu không đúng!";
+            }
         }
     }
 }

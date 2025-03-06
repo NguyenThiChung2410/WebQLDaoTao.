@@ -3,59 +3,76 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Web;
 
 namespace WebQLDaoTao.Models
 {
     public class TaiKhoanDAO
     {
-        public TaiKhoan KiemTra(string tenDN, string matKhau)
+        private string connectionString = ConfigurationManager.ConnectionStrings["WebQLDaoTao_ConStr"].ConnectionString;
+
+        public TaiKhoan DangNhap(string tenDN, string matKhau)
         {
-            TaiKhoan tk = null;
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["WebQLDaoTao_ConStr"].ConnectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("SELECT * FROM TaiKhoan WHERE TenDN = @TenDN AND MatKhau = @MatKhau", conn);
-            cmd.Parameters.AddWithValue("@TenDN", tenDN);
+            SqlConnection conn = new
+            SqlConnection(ConfigurationManager.ConnectionStrings["WebQLDaoTao_ConStr"].ConnectionString);
+            string query = "SELECT * FROM TaiKhoan WHERE TenDangNhap = @TenDangNhap AND MatKhau = @MatKhau";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@TenDangNhap", tenDN);
             cmd.Parameters.AddWithValue("@MatKhau", matKhau);
-            SqlDataReader dr = cmd.ExecuteReader();
-            if (dr.Read())
-            {
-                tk = new TaiKhoan
-                {
-                    TenDN = dr["TenDN"].ToString(),
-                    MatKhau = dr["MatKhau"].ToString(),
-                    VaiTro = dr["ChucVu"].ToString()
-                };
-            }
-            dr.Close();
-            return tk;
-        }
-        public TaiKhoan FindById(string tenDN)
-        {
-            TaiKhoan tk = null;
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["WebQLDaoTao_ConStr"].ConnectionString);
+
             conn.Open();
+            SqlDataReader rd = cmd.ExecuteReader();
 
-            SqlCommand cmd = new SqlCommand("SELECT * FROM TaiKhoan WHERE TenDN = @TenDN", conn);
-            cmd.Parameters.AddWithValue("@TenDN", tenDN);
-
-            SqlDataReader dr = cmd.ExecuteReader();
-            if (dr.Read())
+            if (rd.Read())
             {
-                tk = new TaiKhoan
+                TaiKhoan tk = new TaiKhoan
                 {
-                    TenDN = dr["TenDN"].ToString(),
-                    MatKhau = dr["MatKhau"].ToString(),
-                    VaiTro = dr["ChucVu"].ToString()
+                    TenDN = rd["TenDangNhap"].ToString(),
+                    MatKhau = rd["MatKhau"].ToString(),
+                    VaiTro = rd["VaiTro"].ToString()
                 };
+                return tk;
             }
-            dr.Close();
-            conn.Close();
+            return null;
 
-            return tk;
         }
 
+        public bool KiemTraTonTai(string tenDangNhap)
+        {
+            SqlConnection conn = new
+            SqlConnection(ConfigurationManager.ConnectionStrings["WebQLDaoTao_ConStr"].ConnectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM TaiKhoan WHERE TenDangNhap = @TenDangNhap", conn);
+            cmd.Parameters.AddWithValue("@TenDangNhap", tenDangNhap);
+            int count = (int)cmd.ExecuteScalar();
+            return count > 0;
 
+        }
+        public int Insert(TaiKhoan tk)
+        {
+            try
+            {
+                SqlConnection conn = new
+                SqlConnection(ConfigurationManager.ConnectionStrings["WebQLDaoTao_ConStr"].ConnectionString);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO TaiKhoan (TenDangNhap, MatKhau, VaiTro) VALUES (@TenDangNhap, @MatKhau, @VaiTro)", conn);
+                cmd.Parameters.AddWithValue("@TenDangNhap", tk.TenDN);
+                cmd.Parameters.AddWithValue("@MatKhau", tk.MatKhau);
+                cmd.Parameters.AddWithValue("@VaiTro", tk.VaiTro);
+
+                return cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi thêm tài khoản: " + ex.Message);
+                return 0;
+            }
+        }
+
+        internal TaiKhoan FindByUserName(string username)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

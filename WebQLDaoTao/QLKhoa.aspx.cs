@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using WebQLDaoTao.Models;
 namespace WebQLDaoTao
 {
-    public partial class QLKhoa : System.Web.UI.Page
+    public partial class QLKhoa : SecurePage
     {
         KhoaDAO khDAO = new KhoaDAO();
         protected void Page_Load(object sender, EventArgs e)

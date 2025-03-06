@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using WebQLDaoTao.Models;
 namespace WebQLDaoTao
 {
-    public partial class QLMonHoc : System.Web.UI.Page
+    public partial class QLMonHoc : SecurePage
     {
         MonHocDAO mhDAO = new MonHocDAO();
         protected void Page_Load(object sender, EventArgs e)
