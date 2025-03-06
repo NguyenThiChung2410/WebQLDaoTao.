@@ -4,25 +4,29 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebQLDaoTao.Models;
 
 namespace WebQLDaoTao
 {
-    public partial class SecurePage : Page
+    public partial class SecurePage : System.Web.UI.Page
     {
-        protected void Page_Load(object sender)
+        TaiKhoanDAO tkDao = new TaiKhoanDAO();
+        protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["TaiKhoan"] == null)
+            if (Session["TenDN"] == null)
             {
                 Response.Redirect("Login.aspx");
             }
-            string role = Session["VaiTro"] as string;
-
-            if (role != "CBĐT")
+            else
             {
-                Response.Write("<script>alert('Bạn không có quyền truy cập trang này!'); window.location='Login.aspx';</script>");
+                string username = (string)Session["TenDN"];
+                TaiKhoan taikhoan = tkDao.FindByUserName(username);
 
+                if (taikhoan.VaiTro.Trim() != "CBDT")
+                {
+                    Response.Redirect("TuChoiTruyCap.aspx");
+                }
             }
         }
-
     }
 }

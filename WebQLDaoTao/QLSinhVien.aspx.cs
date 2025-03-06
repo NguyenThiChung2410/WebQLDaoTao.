@@ -13,6 +13,7 @@ namespace WebQLDaoTao
         SinhVienDAO svDAO = new SinhVienDAO();
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!Page.IsPostBack)
             {
                 LoadData();

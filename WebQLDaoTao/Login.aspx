@@ -44,23 +44,19 @@
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div class="container">
-            <h2 class="text-center">Đăng Nhập</h2>
-            <div class="form-group">
-                <label>Tên đăng nhập:</label>
-                <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" placeholder="Enter username"></asp:TextBox>
-            </div>
-            <div class="form-group">
-                <label>Mật khẩu:</label>
-                <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" placeholder="Enter password"></asp:TextBox>
-            </div>
-            <asp:Label ID="lblMessage" runat="server" CssClass="text-danger"></asp:Label>
-            <div class="form-group text-center">
-                <asp:Button ID="btLogin" runat="server" Text="Đăng nhập" CssClass="btn btn-primary" OnClick="btLogin_Click"/>
-            </div>
-            
-        </div>
-    </form>
+     <form id="form1" runat="server">
+     <div class="container">
+         <div class="form-group">
+             <label>Tên đăng nhập </label>
+             <asp:TextBox ID="txtTenDN" runat="server" CssClass="form-control"></asp:TextBox>
+         </div>
+         <div class="form-group">
+             <label>Mật khẩu </label>
+             <asp:TextBox ID="txtMatKhau" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+         </div>
+         <asp:Button ID="btLogin" runat="server" Text="Đăng nhập" OnClick="btLogin_Click" />
+         <asp:Label ID="lbThongBao" runat="server" Text="" CssClass="text-danger"></asp:Label>
+     </div>
+ </form>
 </body>
 </html>
