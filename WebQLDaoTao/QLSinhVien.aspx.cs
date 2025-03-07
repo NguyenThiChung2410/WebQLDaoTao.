@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -13,7 +14,7 @@ namespace WebQLDaoTao
         SinhVienDAO svDAO = new SinhVienDAO();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            base.Page_Load(sender, e);
             if (!Page.IsPostBack)
             {
                 LoadData();
