@@ -18,29 +18,12 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
              max-width: 400px;
         }
-        .btn-primary {
-            background: #05999E; 
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
-            transition: 0.3s ease-in-out;
-        }
 
-            .btn-primary:hover {
-                background: #FFE998; 
-            }
+          
 
-        .btn-link {
-            color: #007bff;
-            text-decoration: none;
-            font-size: 14px;
-        }
+        
 
-            .btn-link:hover {
-                color: #0056b3;
-                text-decoration: underline;
-            }
+            
     </style>
 </head>
 <body>
